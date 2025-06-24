@@ -4,3 +4,4 @@ rapidfuzz>=3.7
 openpyxl>=3.1
 xlsxwriter>=3.2
 pytest>=8
+pyarrow 

@@ -20,7 +20,9 @@ def run_cli() -> None:
     g_df = excel_io.load_gb(Path(args.gb))
     results = comparer.compare(c_df, g_df)
 
-    out_file = Path.cwd() / f"diff_{datetime.now():%Y%m%d}.xlsx"
+    out_dir = Path.cwd() / "输出结果"
+    out_dir.mkdir(exist_ok=True)
+    out_file = out_dir / f"差异_{datetime.now():%Y%m%d_%H%M%S}.xlsx"
     reporter.render(results, out_file)
 
     print(f"已生成 {out_file}")

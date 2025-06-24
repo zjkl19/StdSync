@@ -1,3 +1,27 @@
+# --- Python 缓存 -------------------------------------------------
+__pycache__/
+*.py[cod]
+
+# 覆盖测试运行时生成的 .pytest_cache
+.pytest_cache/
+
+# 覆盖 venv
+.venv/
+env/
+venv/
+
+# IDE / 编辑器
+.vscode/
+.idea/
+
+# 生成的差异报表 & 输出目录
+输出结果/
+
+# PyInstaller 构建产物
+/dist/
+/build/
+/*.spec
+
 # --- Office 文件 ---
 *.xlsx
 *.xls
@@ -9,7 +33,3 @@
 *.ppt
 *.pptx
 
-# --- 打包输出 ---
-/dist/
-/build/
-/*.spec

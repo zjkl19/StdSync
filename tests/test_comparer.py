@@ -23,3 +23,11 @@ def test_compare_obsolete():
 
     results = comparer.compare(company_df, gb_df)
     assert results[0].status == "OBSOLETE"
+
+def test_compare_all_ok():
+    """无任何标准被公告替代，应全部标记为 OK"""
+    company_df = pd.DataFrame({"code": ["Q/FCIC 123—2024"], "name": ["测试标准"]})
+    gb_df = pd.DataFrame({"code": ["GB/T 1346—2024"], "name": ["水泥测试方法"], "replaced": [None]})
+
+    res = comparer.compare(company_df, gb_df)
+    assert res[0].status == "OK"

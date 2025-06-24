@@ -126,10 +126,9 @@ class StdSyncGUI(tk.Tk):
             res = comparer.compare(c_df, g_df)
 
             self.pb["value"] = 70
-            out_path = (
-                Path(self.ent_company.get()).parent
-                / f"diff_{datetime.now():%Y%m%d}.xlsx"
-            )
+            out_dir = Path(self.ent_company.get()).parent / "输出结果"
+            out_dir.mkdir(exist_ok=True)
+            out_path = out_dir / f"差异_{datetime.now():%Y%m%d_%H%M%S}.xlsx"
             reporter.render(res, out_path)
 
             self.pb["value"] = 100

@@ -1,0 +1,15 @@
+# --- Office 文件 ---
+*.xlsx
+*.xls
+*.xlsm
+*.xlsb
+*.csv
+*.doc
+*.docx
+*.ppt
+*.pptx
+
+# --- 打包输出 ---
+/dist/
+/build/
+/*.spec

@@ -1,0 +1,6 @@
+# 建议版本（>= 号表示最低版本），不再强行锁定次要版本
+pandas>=2.2
+rapidfuzz>=3.7
+openpyxl>=3.1
+xlsxwriter>=3.2
+pytest>=8

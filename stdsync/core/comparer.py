@@ -57,7 +57,12 @@ def compare(company_df: pd.DataFrame, gb_df: pd.DataFrame) -> List[MatchResult]:
     for _, c in company_df.iterrows():
         comp_code = normalize_code(c["code"])
         comp_name = str(c["name"])
-        cs = CompanyStandard(code=comp_code, name=comp_name, impl_date=None)
+        cs = CompanyStandard(
+            code=comp_code,
+            name=comp_name,
+            impl_date=None,
+            dept=str(c.get("dept", "")),        # ← 新增
+        )
 
         # ------- OBSOLETE -------------------------------------------------
         if comp_code in replaced_map:

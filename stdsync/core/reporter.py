@@ -36,6 +36,7 @@ STATUS_DISPLAY = {
 
 # 差异表列头
 HEADERS = [
+    "持有部门",        # ← new
     "公司标准编号",
     "公司标准名称",
     "国家旧标准号",
@@ -68,6 +69,7 @@ def render(results: List[MatchResult], out_path: Path | str) -> Path:
             r,
             0,
             [
+                m.company.dept,          # new
                 m.company.code,
                 m.company.name,
                 m.gb_old_code,
@@ -84,9 +86,9 @@ def render(results: List[MatchResult], out_path: Path | str) -> Path:
     for status_cn, color in COLOR_MAP.items():
         ws.conditional_format(
             1,
-            5,
+            6,
             max_row,
-            5,
+            6,
             {
                 "type": "cell",
                 "criteria": "==",

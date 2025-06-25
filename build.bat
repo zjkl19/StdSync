@@ -6,7 +6,7 @@ REM 用法：双击或在命令行执行 build.bat
 REM ==========================================================
 
 :: 安装依赖（确保已激活虚拟环境）
-pip install -r requirements.txt
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 :: 调用 PyInstaller
 pyinstaller --onefile --noconsole main.py -n StdSync

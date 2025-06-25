@@ -7,6 +7,7 @@ from pathlib import Path
 from datetime import datetime
 
 from stdsync.core import excel_io, comparer, reporter
+from stdsync.core import word_exporter
 
 
 def run_cli() -> None:
@@ -25,4 +26,6 @@ def run_cli() -> None:
     out_file = out_dir / f"差异_{datetime.now():%Y%m%d_%H%M%S}.xlsx"
     reporter.render(results, out_file)
 
-    print(f"已生成 {out_file}")
+    doc_file = out_dir / f"差异详情_{datetime.now():%Y%m%d_%H%M%S}.docx"
+    word_exporter.render_word(results, doc_file)
+    print(f"已生成 {out_file} 以及 {doc_file}")

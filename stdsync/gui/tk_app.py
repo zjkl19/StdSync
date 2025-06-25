@@ -9,6 +9,7 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 
 from stdsync.core import excel_io, comparer, reporter
+from stdsync.core import word_exporter
 
 HISTORY_FILE = Path.home() / ".stdsync_history.json"
 MAX_HISTORY = 8
@@ -130,6 +131,9 @@ class StdSyncGUI(tk.Tk):
             out_dir.mkdir(exist_ok=True)
             out_path = out_dir / f"差异_{datetime.now():%Y%m%d_%H%M%S}.xlsx"
             reporter.render(res, out_path)
+            doc_path = out_dir / f"差异详情_{datetime.now():%Y%m%d_%H%M%S}.docx"
+            word_exporter.render_word(res, doc_path)
+            self._log(f"已生成差异表 {out_path}\n已生成 Word {doc_path}\n")
 
             self.pb["value"] = 100
             obsolete = sum(r.status == "OBSOLETE" for r in res)
